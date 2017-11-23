@@ -14,9 +14,15 @@
 #include "PGM_image.h"
 
 PGM_image::PGM_image() {
+    XSIZE, YSIZE, MAXG = 0;
+    values = [];
 }
 
 PGM_image::PGM_image(const PGM_image& orig) {
+    XSIZE = orig.XSIZE;
+    YSIZE = orig.YSIZE;
+    MAXG = orig.MAXG;
+    values = orig.values;
 }
 
 PGM_image::~PGM_image() {
