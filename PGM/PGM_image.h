@@ -15,12 +15,13 @@
 #define PGM_IMAGE_H
 
 #include <vector>
+using namespace std;
 
 class PGM_image {
 private:
     int XSIZE, YSIZE ; // Taille de l'image
     int MAXG ; // valeur du niveau de gris maximum
-    vector<int> 
+    vector<int> values ;
 public:
     PGM_image();
     PGM_image(const PGM_image& orig);
