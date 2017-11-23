@@ -14,6 +14,11 @@
 #include "PGM_image.h"
 #include <cmath>
 
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <ctime>
+
 PGM_image::PGM_image() {
     XSIZE = 0;
     YSIZE = 0;
@@ -27,40 +32,41 @@ PGM_image::PGM_image(int _XSIZE, int _YSIZE, int _MAXG, vector<int> _values) {
     values = _values ;
 }
 
-PGM_image::PGM_image(string filename) {
-    XSIZE, YSIZE, MAXG = 0;
+PGM_image::PGM_image(const char *filename) {
      /*
     input : location of the .pmg to read
     output : vector of int to thresh etc...
     */
   int row = 0, col = 0, numrows = 0, numcols = 0;
+  int trash = 0;
+  string line("");
   fstream infile(filename);
-  string inputLine = "";
 
-  // First line : version
-  getline(infile,inputLine);
+  if(infile)
+  {// First line : version
+      getline(infile,line);
 
-  // Second line : comment
-  getline(infile,inputLine);
+      // Second line : comment
+      getline(infile,line);
 
-  // Third line : size
-  infile >> numcols >> numrows;
+      // Third line : size
+      infile >> numcols >> numrows >> trash;
 
-  XSIZE = numcols;
-  YSIZE = numrows;
-  MAXG = 255;
+      XSIZE = numcols;
+      YSIZE = numrows;
+      MAXG = 255;
 
-  // Following lines : data
-  for(row = 0; row < numrows; ++row)
-  {
-      for (col = 0; col < numcols; ++col)
+      // Following lines : data
+      for(row = 0; row < numrows; ++row)
       {
-          values.push_back(infile);
+          for (col = 0; col < numcols; ++col)
+          {
+              values.push_back(0);
+              infile >> values[row*YSIZE+col];
+          }
       }
   }
-
   infile.close();
-    XSIZE, YSIZE, MAXG = 0;
 }
 
 PGM_image::PGM_image(const PGM_image& orig) {
@@ -111,7 +117,7 @@ bool PGM_image::difference(PGM_image img) {
     return true;
 }
 
-void PGM_image::write(string imageName)
+void PGM_image::write(const char* imageName)
 {
     {
         std::ofstream f(imageName,std::ios_base::out
@@ -119,16 +125,13 @@ void PGM_image::write(string imageName)
                                   |std::ios_base::trunc
                        );
 
-        int maxColorValue = 255;
         f << "P2\n" << XSIZE << " " << YSIZE << "\n" << MAXG << "\n";
-        // std::endl == "\n" + std::flush
-        // we do not want std::flush here.
 
-        for(int i=0;i<height;++i)
-            f.write( reinterpret_cast<const char*>(values[i]), XSIZE );
 
-        if(wannaFlush)
-            f << std::flush;
+        for(int row=0;row<XSIZE;++row)
+        {
+            f.write( reinterpret_cast<const char*>(values[row*YSIZE]), XSIZE );
+            f<<"\n";
+        }
     }
-
 }

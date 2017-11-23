@@ -18,10 +18,9 @@ using namespace std;
 /*
  *
  */
-    int main(int argc, char** argv) {
+int main(int argc, char** argv) {
 
-    string in("lena.pmg");
-    PGM_image lena(in);
+    PGM_image lena("lena.pmg");
     lena.seuillage(60);
     lena.write("lena_seuillee.pmg");
     return 0;
