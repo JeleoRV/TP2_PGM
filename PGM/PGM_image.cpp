@@ -23,9 +23,8 @@ PGM_image::~PGM_image() {
 }
 
 bool PGM_image::seuillage(int seuil){
-    bool fonctionne=false;
     if(seuil > MAXG || seuil < 0){
-        return fonctionne;
+        return false;
     }
     for  (int i=0; i<XSIZE*YSIZE; i++) {
         if (values[i]>= seuil){
@@ -33,4 +32,9 @@ bool PGM_image::seuillage(int seuil){
         } 
         else{values[i] = 0;}
     } 
+    return true;
+}
+
+bool PGM_image::seuillage() {
+    return seuillage(floor(MAXG/2));
 }
