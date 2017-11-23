@@ -7,7 +7,7 @@
 
 /* 
  * File:   PGM_image.h
- * Author: GlouglouLand
+ * Author: Jérôme et Léo
  *
  * Created on 23 novembre 2017, 09:23
  */
