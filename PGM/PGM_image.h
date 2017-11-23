@@ -23,16 +23,14 @@
 
 using namespace std;
 
-class PGM_image {
+class PGM_image{
 private:
     int XSIZE, YSIZE ; // Taille de l'image
     int MAXG ; // valeur du niveau de gris maximum
     vector<int> values ; // Tableau contenant toutes les valeurs de chaque pixel
-<<<<<<< HEAD
-    // Le tableau est � une dimension et a donc une taille XSIZE*YSIZE
-=======
+
     // Le tableau est à une dimension et a donc une taille XSIZE*YSIZE
->>>>>>> c247eb21a88f09d0a3fb027a008f873538636085
+
 public:
     PGM_image();
     PGM_image(string filename);
@@ -56,7 +54,8 @@ public:
 
     // DIFFERENCE ENTRE DEUX IMAGES
     bool difference(PGM_image img);
-
+    
+    // ECRITURE ET SAUVEGARDE D'UNE IMAGE PGM
     void write(string imageName);
 
 };
