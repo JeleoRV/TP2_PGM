@@ -12,6 +12,7 @@
  */
 
 #include "PGM_image.h"
+#include <cmath>
 
 PGM_image::PGM_image() {
     XSIZE = 0;
@@ -27,7 +28,6 @@ PGM_image::PGM_image(string filename) {
     */
   int row = 0, col = 0, numrows = 0, numcols = 0;
   fstream infile(filename);
-  stringstream ss;
   string inputLine = "";
 
   // First line : version
@@ -66,14 +66,14 @@ PGM_image::~PGM_image() {
 }
 
 bool PGM_image::seuillage(int seuil){
-    // Vérification que seuil est bien compris entre 0 et MAXG
+    // Vï¿½rification que seuil est bien compris entre 0 et MAXG
     if(seuil > MAXG || seuil < 0){
         return false;
     }
     // On parcourt le tableau de valeurs
     for  (int i=0; i<XSIZE*YSIZE; i++) {
-        // Si la valeur est supérieure au seuil (cad plus blanc que le seuil),
-        // on change la valeur à blanc.
+        // Si la valeur est supï¿½rieure au seuil (cad plus blanc que le seuil),
+        // on change la valeur ï¿½ blanc.
         if (values[i]>= seuil){
             values[i] = MAXG;
         }
@@ -88,15 +88,15 @@ bool PGM_image::seuillage() {
 }
 
 bool PGM_image::difference(PGM_image img) {
-    // Vérification de la compatibilité des deux images
+    // Vï¿½rification de la compatibilitï¿½ des deux images
     if(!(YSIZE == img.YSIZE && XSIZE==img.XSIZE && MAXG==img.MAXG)){
         return false;
     }
 
     // On parcourt les tableaux de valeurs
     for (int i=0; i< YSIZE*XSIZE; i++){
-        // On affecte une nouvelle valeur à chaque pixel : différence entre les
-        // des deux images, (0 si la différence est négative).
+        // On affecte une nouvelle valeur ï¿½ chaque pixel : diffï¿½rence entre les
+        // des deux images, (0 si la diffï¿½rence est nï¿½gative).
         values[i] = max(0 ,values[i]-img.values[i]);
     }
 
