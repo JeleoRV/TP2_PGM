@@ -1,10 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * La classe PGM_image est la structure permettant de manipuler les images au
+ * format PGM dans C++.
+ * On manipule seulement ici des images PGM en ASCII (ie. la ligne 2 du fichier
+ * PGM est P2)
  */
 
-/* 
+/*
  * File:   PGM_image.h
  * Author: GlouglouLand
  *
@@ -15,19 +16,36 @@
 #define PGM_IMAGE_H
 
 #include <vector>
+# include <fstream>
+# include <cstring>
+# include <cstdlib>
+# include <iostream>
+
 using namespace std;
 
 class PGM_image {
 private:
     int XSIZE, YSIZE ; // Taille de l'image
     int MAXG ; // valeur du niveau de gris maximum
-    vector<int> values ;
+    vector<int> values ; // Tableau contenant toutes les valeurs de chaque pixel
+    // Le tableau est à une dimension et a donc une taille XSIZE*YSIZE
 public:
     PGM_image();
+    PGM_image(string filename);
     PGM_image(const PGM_image& orig);
     virtual ~PGM_image();
+
+    // SEUILLAGE
+    bool seuillage(int seuil); // Fonction de seuillage
+    bool seuillage(); // Surcharge avec seuil = MAXG/2 par défaut
+    // La méthode seuillage renvoie true si ça a fonctionné, false sinon (dans
+    // le cas ou seuil est une valeur aberrante)
+
+    // DIFFERENCE ENTRE DEUX IMAGES
+    bool difference(PGM_image img);
+
+    void write(string imageName);
 
 };
 
 #endif /* PGM_IMAGE_H */
-
