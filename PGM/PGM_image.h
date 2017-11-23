@@ -32,10 +32,12 @@ private:
     // Le tableau est à une dimension et a donc une taille XSIZE*YSIZE
 
 public:
-    PGM_image();
-    PGM_image(string filename);
-    PGM_image(const PGM_image& orig);
-    virtual ~PGM_image();
+    PGM_image(); // Constructeur par défaut
+    PGM_image(string filename); // Contructeur par lecture d'un fichier PGM
+    PGM_image(const PGM_image& orig); // Constructeur par recopie
+    // Constructeur complet
+    PGM_image(int XSIZE, int YSIZE, int MAXG, vector<int> values);
+    virtual ~PGM_image(); // Destructeur
     
     // SEUILLAGE
     bool seuillage(int seuil); // Fonction de seuillage

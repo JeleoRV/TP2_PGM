@@ -20,6 +20,13 @@ PGM_image::PGM_image() {
     MAXG = 0;
 }
 
+PGM_image::PGM_image(int _XSIZE, int _YSIZE, int _MAXG, vector<int> _values) {
+    XSIZE = _XSIZE;
+    YSIZE = _YSIZE;
+    MAXG = _MAXG;
+    values = _values ;
+}
+
 PGM_image::PGM_image(string filename) {
     XSIZE, YSIZE, MAXG = 0;
      /*
