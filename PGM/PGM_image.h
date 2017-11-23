@@ -21,13 +21,17 @@ class PGM_image {
 private:
     int XSIZE, YSIZE ; // Taille de l'image
     int MAXG ; // valeur du niveau de gris maximum
-    vector<int> values ;
+    vector<int> values ; // Tableau contenant toutes les valeurs de chaque pixel
+    // Le tableau est à une dimension et a donc une taille XSIZE*YSIZE
 public:
     PGM_image();
     PGM_image(const PGM_image& orig);
     virtual ~PGM_image();
     
-    bool seuillage(int seuil);
+    bool seuillage(int seuil); // Fonction de seuillage
+    bool seuillage(); // Surcharge avec seuil = MAXG/2 par défaut
+    // La méthode seuillage renvoie true si ça a fonctionné, false sinon (dans
+    // le cas ou seuil est une valeur aberrante)
 
 };
 
