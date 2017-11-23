@@ -43,3 +43,20 @@ bool PGM_image::seuillage(int seuil){
 bool PGM_image::seuillage() {
     return seuillage(floor(MAXG/2));
 }
+
+bool PGM_image::difference(PGM_image img) {
+    // Vérification de la compatibilité des deux images
+    if(!(YSIZE == img.YSIZE && XSIZE==img.XSIZE && MAXG==img.MAXG)){
+        return false;
+    }
+    
+    // On parcourt les tableaux de valeurs
+    for (int i=0; i< YSIZE*XSIZE; i++){
+        // On affecte une nouvelle valeur à chaque pixel : différence entre les
+        // des deux images, (0 si la différence est négative).
+        values[i] = max(0 ,values[i]-img.values[i]);
+    }
+    
+    return true;
+}
+
