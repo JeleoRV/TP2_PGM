@@ -22,3 +22,15 @@ PGM_image::PGM_image(const PGM_image& orig) {
 PGM_image::~PGM_image() {
 }
 
+bool PGM_image::seuillage(int seuil){
+    bool fonctionne=false;
+    if(seuil > MAXG || seuil < 0){
+        return fonctionne;
+    }
+    for  (int i=0; i<XSIZE*YSIZE; i++) {
+        if (values[i]>= seuil){
+            values[i] = MAXG;
+        } 
+        else{values[i] = 0;}
+    } 
+}
