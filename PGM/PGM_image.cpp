@@ -77,10 +77,10 @@ bool PGM_image::seuillage(int seuil){
         // on change la valeur à blanc.
         if (values[i]>= seuil){
             values[i] = MAXG;
-        } 
+        }
         // Sinon la valeur est noire.
         else{values[i] = 0;}
-    } 
+    }
     return true;
 }
 
@@ -93,18 +93,18 @@ bool PGM_image::difference(PGM_image img) {
     if(!(YSIZE == img.YSIZE && XSIZE==img.XSIZE && MAXG==img.MAXG)){
         return false;
     }
-    
+
     // On parcourt les tableaux de valeurs
     for (int i=0; i< YSIZE*XSIZE; i++){
         // On affecte une nouvelle valeur à chaque pixel : différence entre les
         // des deux images, (0 si la différence est négative).
         values[i] = max(0 ,values[i]-img.values[i]);
     }
-    
+
     return true;
 }
 
-bool PGM_image::write(string imageName)
+void PGM_image::write(string imageName)
 {
     {
         std::ofstream f(imageName,std::ios_base::out
