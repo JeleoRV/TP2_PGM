@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * La classe PGM_image est la structure permettant de manipuler les images au
+ * format PGM dans C++.
+ * On manipule seulement ici des images PGM en ASCII (ie. la ligne 2 du fichier
+ * PGM est P2)
  */
 
 /* 
