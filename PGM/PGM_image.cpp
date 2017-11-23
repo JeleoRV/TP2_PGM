@@ -12,10 +12,10 @@
  */
 
 #include "PGM_image.h"
+#include <cmath>
 
 PGM_image::PGM_image() {
     XSIZE, YSIZE, MAXG = 0;
-    values = [];
 }
 
 PGM_image::PGM_image(const PGM_image& orig) {
