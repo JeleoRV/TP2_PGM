@@ -26,6 +26,8 @@ public:
     PGM_image();
     PGM_image(const PGM_image& orig);
     virtual ~PGM_image();
+    
+    bool seuillage(int seuil);
 
 };
 
