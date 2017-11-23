@@ -28,10 +28,14 @@ public:
     PGM_image(const PGM_image& orig);
     virtual ~PGM_image();
     
+    // SEUILLAGE
     bool seuillage(int seuil); // Fonction de seuillage
     bool seuillage(); // Surcharge avec seuil = MAXG/2 par défaut
     // La méthode seuillage renvoie true si ça a fonctionné, false sinon (dans
     // le cas ou seuil est une valeur aberrante)
+    
+    // DIFFERENCE ENTRE DEUX IMAGES
+    bool difference(PGM_image img);
 
 };
 
