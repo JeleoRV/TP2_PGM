@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   main.cpp
  * Author: GlouglouLand
  *
@@ -12,14 +12,18 @@
  */
 
 #include <cstdlib>
-
+#include "PGM_image.h"
 using namespace std;
 
 /*
- * 
+ *
  */
-int main(int argc, char** argv) {
+    int main(int argc, char** argv) {
 
+    string in("lena.pmg");
+    PGM_image lena(in);
+    lena.seuillage(60);
+    lena.write("lena_seuillee.pmg");
     return 0;
 }
 
