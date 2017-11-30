@@ -12,6 +12,7 @@
  */
 
 #include <cstdlib>
+#include <iostream>
 #include "PGM_image.h"
 using namespace std;
 
@@ -23,6 +24,7 @@ int main(int argc, char** argv) {
     PGM_image lena("lena.pgm");
     lena.seuillage(60);
     lena.write("lena_seuillee.pgm");
+    cout << "Ca marche !" << endl;
     return 0;
 }
 
