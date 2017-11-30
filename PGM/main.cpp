@@ -20,9 +20,9 @@ using namespace std;
  */
 int main(int argc, char** argv) {
 
-    PGM_image lena("lena.pmg");
+    PGM_image lena("lena.pgm");
     lena.seuillage(60);
-    lena.write("lena_seuillee.pmg");
+    lena.write("lena_seuillee.pgm");
     return 0;
 }
 
