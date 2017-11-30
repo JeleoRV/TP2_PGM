@@ -24,7 +24,9 @@ int main(int argc, char** argv) {
     PGM_image lena("lena.pgm");
     lena.seuillage(60);
     lena.write("lena_seuillee.pgm");
-    cout << "Ca marche !" << endl;
+    cout << "Appuyer sur n'importe quelle touche puis ENTREE pour terminer l'application..." << endl;
+    string i;
+    cin >> i;
     return 0;
 }
 
